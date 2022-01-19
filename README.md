@@ -51,8 +51,9 @@ sudo systemctl restart sshd
 
 #fireWall stuff
 #? eboubaker 
-sudo firewall-cmd --zone=public --permanent --add-port=8000-10000/tcp 
-sudo firewall-cmd --zone=public --permanent --add-port=80/tcp 
+sudo firewall-cmd --permanent --add-service=http
+sudo firewall-cmd --permanent --add-service=https
+sudo firewall-cmd --permanent --zone=public --add-port=8000-10000/tcp 
 sudo firewall-cmd --reload
 
 
@@ -103,9 +104,6 @@ chmod +x /usr/bin/docker-compose
 
 # SSL certificate
 sudo yum install -y snapd certbot python3-certbot-nginx
-sudo firewall-cmd --permanent --add-service=http
-sudo firewall-cmd --permanent --add-service=https
-sudo firewall-cmd --reload
 sudo certbot --nginx
 
 # Install Cockpit

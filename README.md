@@ -108,7 +108,7 @@ sudo mv ~/docker-compose /usr/bin/ && \
 sudo usermod -a -G docker eboubaker
 
 # SSL certificate
-sudo yum install -y snapd certbot python3-certbot-nginx
+sudo yum install -y snapd certbot python3-certbot-nginx && \
 sudo certbot --nginx
 
 # Install Cockpit

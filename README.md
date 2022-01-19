@@ -7,14 +7,14 @@
 #? root
 timedatectl set-timezone Africa/Algiers
 
-# Increase Swap file to add more 2GB of SSD as memory
+# Increase Swap file to add more 4GB of SSD as memory
 #? root
-swapoff /swapfile
-dd if=/dev/zero of=/swapfile bs=1M count=2048 oflag=append conv=notrunc
-chmod 600 /swapfile
-mkswap /swapfile
-swapon /swapfile
-echo /swapfile    none    swap    sw    0   0 >> /etc/fstab
+swapoff /swapfile && \
+dd if=/dev/zero of=/swapfile bs=1M count=2048 oflag=append conv=notrunc && \
+chmod 600 /swapfile && \
+mkswap /swapfile && \
+swapon /swapfile && \
+printf "/swapfile  none                    swap    sw                   0 0\n" >> /etc/fstab  && \
 free -h #check
 
 

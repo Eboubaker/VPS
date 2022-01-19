@@ -93,6 +93,9 @@ printf "\n\n\n\n\n\n\n\n\n" | bash ~/wgconfig.sh
 
 # Install Docker
 #? root
+yum-config-manager --add-repo https://download.docker.com/linux/centos/docker-ce.repo
+yum update -y
+yum install -y docker-ce docker-ce-cli containerd.io
 curl -SL https://github.com/docker/compose/releases/download/v2.2.3/docker-compose-linux-x86_64 -o /usr/bin/docker-compose
 chmod +x /usr/bin/docker-compose
 

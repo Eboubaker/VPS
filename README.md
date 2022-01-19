@@ -63,7 +63,9 @@ sudo firewall-cmd --reload
 # Install some stuff
 #? eboubaker 
 sudo yum group install -y "Development Tools" && \
-sudo yum install -y wget yum-utils java-11-openjdk-devel util-linux-user goaccess && \
+sudo yum install -y wget yum-utils java-11-openjdk-devel supervisor util-linux-user goaccess && \
+sudo systemctl enable supervisord && \
+sudo systemctl start supervisord && \
 sudo yum module enable -y nodejs:16 && \
 sudo yum install -y npm && \
 sudo npm i -g pnpm && \

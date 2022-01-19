@@ -26,9 +26,11 @@ yum -y update
 
 # add myself
 #? root
-useradd -m eboubaker \
-passwd eboubaker \
-usermod -G wheel eboubaker \
+useradd -m eboubaker && \
+passwd eboubaker && \
+usermod -G wheel eboubaker && \
+groupadd www && \
+usermod -a -G www eboubaker && \
 exit
 
 # Disable PasswordAuthentication and enable PublicKeyAuthentication
@@ -67,6 +69,7 @@ sudo yum install -y npm && \
 sudo npm i -g pnpm && \
 sudo yum module enable -y php:remi-8.1/devel && \
 sudo yum install -y vim nginx php composer php-pear php-devel curl-devel && \
+usermod -a -G www nginx && \
 sudo pear config-set php_ini /etc/php.ini && \
 sudo pecl channel-update pecl.php.net && \
 printf "y\ny\ny\ny\ny\ny\n" | sudo pecl install swoole && \
@@ -95,13 +98,14 @@ printf "\n\n\n\n\n\n\n\n\n" | bash ~/wgconfig.sh
 
 
 # Install Docker
-#? root
-yum-config-manager --add-repo https://download.docker.com/linux/centos/docker-ce.repo
-yum update -y
-yum install -y docker-ce docker-ce-cli containerd.io
-curl -SL https://github.com/docker/compose/releases/download/v2.2.3/docker-compose-linux-x86_64 -o /usr/bin/docker-compose
-chmod +x /usr/bin/docker-compose
-
+#? eboubaker
+sudo yum-config-manager -y --add-repo https://download.docker.com/linux/centos/docker-ce.repo && \
+sudo yum update -y && \
+sudo yum install -y docker-ce docker-ce-cli containerd.io && \
+curl -SL https://github.com/docker/compose/releases/download/v2.2.3/docker-compose-linux-x86_64 -o ~/docker-compose && \
+chmod +x ~/docker-compose && \
+sudo mv ~/docker-compose /usr/bin/ && \
+sudo usermod -a -G docker eboubaker
 
 # SSL certificate
 sudo yum install -y snapd certbot python3-certbot-nginx

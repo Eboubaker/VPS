@@ -121,4 +121,7 @@ sudo systemctl enable --now cockpit.socket
 # Follow these guides to proxy the cockpit panel into nginx (enables ssl and logs)
 # https://github.com/cockpit-project/cockpit/wiki/Proxying-Cockpit-over-nginx
 # https://cockpit-project.org/guide/latest/listen.html
+
+
+# add the server root directory as a windows drive letter using this utility: https://github.com/evsar3/sshfs-win-manager
 ```

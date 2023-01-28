@@ -104,7 +104,7 @@ printf "\n\n\n\n\n\n\n\n\n" | bash ~/wgconfig.sh
 sudo yum-config-manager -y --add-repo https://download.docker.com/linux/centos/docker-ce.repo && \
 sudo yum update -y && \
 sudo yum install -y docker-ce docker-ce-cli containerd.io && \
-curl -SL https://github.com/docker/compose/releases/download/v2.2.3/docker-compose-linux-x86_64 -o ~/docker-compose && \
+curl -SL https://github.com/docker/compose/releases/download/v2.15.1/docker-compose-linux-x86_64 -o ~/docker-compose && \
 chmod +x ~/docker-compose && \
 sudo mv ~/docker-compose /usr/bin/ && \
 sudo usermod -a -G docker eboubaker
